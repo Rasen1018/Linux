@@ -1,2 +1,2 @@
 # Linux practice
-# RasberryPi / Jetson nan
+# RasberryPi / Jetson nano
