@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 	}
 
 	int elemSize = infoHeader.biBitCount/8;
-	size=widthbytes(infoHeader.biWidth * elemSize); 
+	size=infoHeader.biWidth * elemSize; 
 	graysize = widthbytes(8 * infoHeader.biWidth);
 	
 		imagesize=infoHeader.biHeight*size;
@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 		for(x=0; x < size; x+=elemSize) {
 			for(z=0; z < elemSize; z++) {
 				int rgb = inimg[x+y*size+z]; 
-				//rgb += rand()%256;
+				rgb += rand()%256;
 				outimg[x+y*size+z]= clip(rgb, 0, 255);
 			}
 		};
