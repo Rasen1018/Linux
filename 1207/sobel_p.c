@@ -25,7 +25,8 @@ int main(int argc, char** argv)
     BITMAPINFOHEADER bmpInfoHeader;     /* BMP IMAGE INFO */
     RGBQUAD *palrgb;
     ubyte *inimg, *outimg, *padimg;
-	float r, g, b, gray;
+	ubyte r, g, b;
+	float gray;
     int x, y, z, imageSize;
 
     if(argc != 3) {
@@ -78,14 +79,16 @@ int main(int argc, char** argv)
 			r = (float)inimg[x+y*size+2];
 			g = (float)inimg[x+y*size+1];
 			b = (float)inimg[x+y*size+0];
-#if 1
+#if 0
 			gray = (r*0.3F)+(g*0.59F)+(b*0.11F);
 
 			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)]=gray;
 			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)+1]=gray;
 			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)+2]=gray;
 #else
-			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)+2]=
+			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)]=((66*r+129*g+25*b+128)>>8)+16;
+			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)+1]=((66*r+129*g+25*b+128)>>8)+16;
+			padimg[(x+elemSize)+(y+1)*(size+elemSize*2)+2]=((66*r+129*g+25*b+128)>>8)+16;
 #endif
 		}
 	}
