@@ -2,9 +2,12 @@
 using namespace cv;
 using namespace std;
 
+void put_string(Mat &frame, string text, Point pt, int value) {}
+
 int main()
 {
-	VideoCapture capture(0);
+	VideoCapture capture;
+	capture.open("./video_file.avi");
 	CV_Assert(capture.isOpened());
 
 	double fps = 29.97;
