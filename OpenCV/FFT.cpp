@@ -82,7 +82,7 @@ void butterfly(Mat& dst, int dir)
 
 				Vec2f G_odd_W(0, 0);
 				G_odd_W[0] = G_odd[0] * wre - G_odd[1] * wim;
-				G_odd_W[1] = G_odd[1] * wre - G_odd[0] * wim;
+				G_odd_W[1] = G_odd[1] * wre + G_odd[0] * wim;
 
 				dst.at<Vec2f>(even) = G_even + G_odd_W;
 				dst.at<Vec2f>(odd) = G_even - G_odd_W;
@@ -119,7 +119,7 @@ int main()
 	Mat dft_coef1, dft_img1, shuffling_img1;
 	Mat dft_coef2, dft_img2, shuffling_img2;
 
-	Mat image = imread("./lake.png", 0);
+	Mat image = imread("./sonic.png", 0);
 	CV_Assert(image.data);
 
 	pad_img = zeropadding(image);
