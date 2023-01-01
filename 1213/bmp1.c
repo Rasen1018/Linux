@@ -14,6 +14,7 @@ int main(int argc, char **argv) {
 	FILE *fp;
 	BITMAPFILEHEADER bmpHeader;
 	BITMAPINFOHEADER bmpInfo;
+	int r, g, b;
 	ubyte *inimg;
 
 	// argument count 오류시 종료
